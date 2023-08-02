@@ -6,7 +6,7 @@ const express = require('express');
 const path = require('path');
 
 /* Import routes */
-const api = require('./routes/index');
+const api = require('./routes/index.js');
 
 const PORT = process.env.PORT || 3001;
 
@@ -14,7 +14,7 @@ const app = express();
 
 /* Middleware to parse JSON data */
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 app.use('/api', api);
 
 /* GET route to homepage */
@@ -31,6 +31,6 @@ app.get('/notes', (req, res) =>
 app.use(express.static('public'));
 
 /* Start server and listen on port */
-app.listen(PORT, () =>
+app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}.`)
-);
+});

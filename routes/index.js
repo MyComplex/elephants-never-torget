@@ -2,7 +2,7 @@
 const express = require('express');
 
 /*  Import notes router for /notes */
-const notesRouter = require('./notes');
+const notesRouter = require('./notes.js');
 
 const app = express();
 
