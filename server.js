@@ -27,8 +27,13 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
-/* Load last to avoid 404 errors from the server */
+/* Set the location of the public web files */
 app.use(express.static('public'));
+
+/* GET wildcard that returns to homepage */
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+});
 
 /* Start server and listen on port */
 app.listen(PORT, () => {
