@@ -17,6 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', api);
 
+/* Set the location of the public web files */
+app.use(express.static('public'));
+
 /* GET route to homepage */
 app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
@@ -26,9 +29,6 @@ app.get('/', (req, res) =>
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
-
-/* Set the location of the public web files */
-app.use(express.static('public'));
 
 /* GET wildcard that returns to homepage */
 app.get('*', (req, res) => {
